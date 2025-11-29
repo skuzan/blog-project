@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router";
 
-const Register = ({ onCreateUser }) => {
+const Register = ({ onCreateUser, setIsLogin }) => {
   const [fullName, setFullName] = useState(null);
   const [username, setUsername] = useState(null);
   const [email, setEmail] = useState(null);
@@ -9,7 +9,10 @@ const Register = ({ onCreateUser }) => {
   const [avatar, setAvatar] = useState(null);
   const [bio, setBio] = useState(null);
 
+  const navigate = useNavigate();
+
   const handleRegister = () => {
+
     const newUser = {
       username: username,
       email: email,
@@ -26,6 +29,14 @@ const Register = ({ onCreateUser }) => {
     setAvatar("");
     setBio("");
   };
+
+      useEffect(() => {
+        const isUserLogged = localStorage.getItem("key");
+        if (isUserLogged === "true") {
+          setIsLogin(true);
+          navigate("/dashboard");
+        }
+      }, []);
 
   return (
     <div className="auth-page">

@@ -1,22 +1,41 @@
-import { useState } from "react";
-import { Link } from "react-router";
-import { notify } from "../../Toasts/Toast";
+import { useState, useEffect } from "react";
+import { Link, Links, useNavigate } from "react-router";
+import { notify } from "../../Toasts/toast";
 
-
-
-const Login = ({ data }) => {
+const Login = ({ data, isLogin, setIsLogin }) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const [isLogin, setIsLogin] = useState(false);
 
 
+  const navigate = useNavigate();
 
-  const userNames = data.map((d) => d.username);
-  const userPassWord = data.map((d) => d.password);
+  const emailValidation = () => {
+    const userEmail = data.map((d) => d.email);
+    return userEmail.includes(email);
+  };
+  const passwordValidation = () => {
+    const userPassWord = data.map((d) => d.password);
+    return userPassWord.includes(password);
+  };
 
   const handleUserLogin = () => {
-    if (!email && !password) return notify.warning('Username and password are required.')
+    if (!email && !password)
+      return notify.error("Username and password are required.");
+    if (emailValidation() && passwordValidation) {
+      setIsLogin(true);
+      navigate("/dashboard");
+    } else {
+      notify.error("Invalid username or password. Please try again.");
+    }
   };
+
+      useEffect(() => {
+      const isUserLogged = localStorage.getItem("key");
+      if (isUserLogged === "true") {
+        setIsLogin(true);
+        navigate("/dashboard");
+      }
+    }, []);
 
   return (
     <div className="auth-page">
@@ -76,7 +95,6 @@ const Login = ({ data }) => {
           </Link>
         </p>
       </div>
-      <Toasts />
     </div>
   );
 };
