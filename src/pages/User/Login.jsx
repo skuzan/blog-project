@@ -1,41 +1,53 @@
 import { useState, useEffect } from "react";
-import { Link, Links, useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { notify } from "../../Toasts/toast";
 
-const Login = ({ data, isLogin, setIsLogin }) => {
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
-
+const Login = ({ data, setIsLogin, setCurrentUserId }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  const emailValidation = () => {
-    const userEmail = data.map((d) => d.email);
-    return userEmail.includes(email);
-  };
-  const passwordValidation = () => {
-    const userPassWord = data.map((d) => d.password);
-    return userPassWord.includes(password);
-  };
-
   const handleUserLogin = () => {
-    if (!email && !password)
+
+    if (!email || !password) {
       return notify.error("Username and password are required.");
-    if (emailValidation() && passwordValidation) {
-      setIsLogin(true);
-      navigate("/dashboard");
-    } else {
-      notify.error("Invalid username or password. Please try again.");
     }
+
+    const user = data.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    console.log(user);
+
+    if (!user) {
+      return notify.error(
+        "Incorrect username or password. Please try again."
+      );
+    }
+
+    // 3) Başarılı login
+    setIsLogin(true);
+    setCurrentUserId(user.id);
+   
+
+    localStorage.setItem("key", "true");
+    localStorage.setItem("userId", user.id);
+
+    notify.success(`Welcome back, ${user.fullName || user.username}!`);
+    navigate("/dashboard");
   };
 
-      useEffect(() => {
-      const isUserLogged = localStorage.getItem("key");
-      if (isUserLogged === "true") {
-        setIsLogin(true);
-        navigate("/dashboard");
-      }
-    }, []);
+  useEffect(() => {
+    const isUserLogged = localStorage.getItem("key");
+    const savedUserId = localStorage.getItem("userId");
+
+    if (isUserLogged === "true" && savedUserId) {
+      setIsLogin(true);
+      setCurrentUserId(savedUserId);
+      navigate("/dashboard");
+    }
+  }, [navigate, setIsLogin, setCurrentUserId]);
 
   return (
     <div className="auth-page">
@@ -45,8 +57,8 @@ const Login = ({ data, isLogin, setIsLogin }) => {
           Login to continue reading and managing your posts.
         </p>
 
-        <form className="auth-form">
-          {/* Username or Email */}
+        <form className="auth-form" onSubmit={(e) => e.preventDefault()}>
+          {/* Email */}
           <div className="auth-field">
             <label className="auth-label">Email</label>
             <input
@@ -83,7 +95,11 @@ const Login = ({ data, isLogin, setIsLogin }) => {
           </div>
 
           {/* Button */}
-          <button onClick={handleUserLogin} type="button" className="auth-btn">
+          <button
+            onClick={handleUserLogin}
+            type="button"
+            className="auth-btn"
+          >
             Login
           </button>
         </form>

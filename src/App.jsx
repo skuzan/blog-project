@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import UserDashboard from "./components/UserDashboard";
 import AddPost from "./pages/User/AddPost";
 import Dashbord from "./pages/User/Dashbord";
+import Profile from "./pages/User/Profile";
 
 const BASE_URL = "http://localhost:3005";
 
@@ -23,8 +24,9 @@ function App() {
   const [data, setData] = useState([]);
   const [posts, setPosts] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
+  const [currentUserId, setCurrentUserId] = useState("");
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   //USERS Functions
 
   const getAllUsers = async () => {
@@ -33,11 +35,15 @@ function App() {
   };
 
   const createUser = async (newUser) => {
-    await axios.post(`${BASE_URL}/users`, newUser);
+    const response = await axios.post(`${BASE_URL}/users`, newUser);
+    return response.data;
   };
 
   const updateUser = async (userId, updatedUser) => {
     await axios.put(`${BASE_URL}/users/${userId}`, updatedUser);
+    setData((prev) =>
+      prev.map((u) => (u.id === userId ? { ...u, ...updatedUser } : u))
+    );
   };
 
   const deleteUser = async (userId) => {
@@ -60,39 +66,67 @@ function App() {
     getAllPosts();
   }, []);
 
-    useEffect(() => {
-      const isUserLogged = localStorage.getItem("key");
-      if (isUserLogged === "true") {
-        setIsLogin(true);
-        navigate("/dashboard");
-      }
-    }, []);
-  
-    useEffect(() => {
-      if (isLogin) {
-        localStorage.setItem("key", true);
-      }
-    }, [isLogin]);
+  useEffect(() => {
+    const isUserLogged = localStorage.getItem("key");
+    const savedUserId = localStorage.getItem("userId");
+    if (isUserLogged === "true" && savedUserId) {
+      setIsLogin(true);
+      setCurrentUserId(savedUserId);
+      navigate("/dashboard");
+    }
+  }, []);
 
   return (
     <>
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home posts={posts} />} />
+        <Route path="/" element={<Home posts={posts}  setIsLogin={setIsLogin}/>} />
         <Route path="/posts" element={<Posts posts={posts} />} />
         <Route path="/posts/:postId" element={<PostDetails posts={posts} />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Kontakt />} />
         <Route
           path="/register"
-          element={<Register onCreateUser={createUser} setIsLogin = {setIsLogin} />}
+          element={
+            <Register
+              onCreateUser={createUser}
+              setIsLogin={setIsLogin}
+              setCurrentUserId={setCurrentUserId}
+            />
+          }
         />
-        <Route path="login" element={<Login data={data} isLogin= {isLogin} setIsLogin = {setIsLogin} />} />
+        <Route
+          path="login"
+          element={
+            <Login
+              data={data}
+              isLogin={isLogin}
+              setIsLogin={setIsLogin}
+              setCurrentUserId={setCurrentUserId}
+            />
+          }
+        />
 
-        <Route element={<UserDashboard isLogin= {isLogin} />}>
-          <Route path="/dashboard" element={<Dashbord />} />
-          <Route path="/addpost" element={<AddPost onAddPost = {addPost} data = {data}/>} />
+        <Route element={<UserDashboard isLogin={isLogin} />}>
+          <Route
+            path="/dashboard"
+            element={<Dashbord setIsLogin={setIsLogin} isLogin={isLogin} />}
+          />
+          <Route
+            path="/addpost"
+            element={<AddPost onAddPost={addPost} data={data} />}
+          />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                data={data}
+                currentUserId={currentUserId}
+                onUpdateUser={updateUser}
+              />
+            }
+          />
         </Route>
 
         <Route path="*" element={<NotFound />} />

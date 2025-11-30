@@ -1,24 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "username": "sinan",
-      "email": "sinan@example.com",
-      "password": "123456",
-      "fullName": "Sinan Kuzen",
-      "avatar": "/images/users/sinan.jpg",
-      "bio": "Fullstack developer & blogger. Writes about React, Android and everyday life in Germany."
-    },
-    {
-      "id": 2,
-      "username": "selma",
-      "email": "selma@example.com",
-      "password": "ada123",
-      "fullName": "Selma Kuzen",
-      "avatar": "/images/users/selma.jpg",
-      "bio": "Student, book lover and creative mind. Shares school tips and fun projects."
-    },
-    {
       "id": "555c",
       "username": "hkuzan",
       "email": "hasan@gmail.com",
@@ -35,6 +17,15 @@
       "fullName": "Bilal Deneme",
       "avatar": "/images/users/bilal.jpg",
       "bio": "Bilal burada yaşar"
+    },
+    {
+      "id": "6482",
+      "username": "omer",
+      "email": "omer@example.com",
+      "password": "12345.6",
+      "fullName": "Omer Sahin",
+      "avatar": "/images/users/omer.jpg",
+      "bio": "Omer burada sen neredesin..."
     }
   ],
   "posts": [

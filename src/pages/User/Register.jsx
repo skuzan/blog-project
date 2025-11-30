@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { notify } from "../../Toasts/toast";
 
-const Register = ({ onCreateUser, setIsLogin }) => {
-  const [fullName, setFullName] = useState(null);
-  const [username, setUsername] = useState(null);
-  const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [avatar, setAvatar] = useState(null);
-  const [bio, setBio] = useState(null);
+const Register = ({ onCreateUser, setIsLogin, setCurrentUserId }) => {
+  const [fullName, setFullName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState("");
+  const [bio, setBio] = useState("");
 
   const navigate = useNavigate();
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
+    if (!fullName || !username || !email || !password) {
+      return notify.error(
+        "Full name, username, email and password are required."
+      );
+    }
 
     const newUser = {
       username: username,
@@ -21,22 +27,39 @@ const Register = ({ onCreateUser, setIsLogin }) => {
       avatar: avatar,
       bio: bio,
     };
-    onCreateUser(newUser);
-    setFullName("");
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    setAvatar("");
-    setBio("");
+
+    try {
+      const createdUser = await onCreateUser(newUser); 
+      setIsLogin(true);
+      setCurrentUserId(createdUser.id);
+      localStorage.setItem("key", "true");
+      localStorage.setItem("userId", String(createdUser.id));
+
+      notify.success("Account created successfully. Welcome!");
+      navigate("/dashboard");
+
+      // Formu temizle
+      setFullName("");
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      setAvatar("");
+      setBio("");
+    } catch (err) {
+      
+      notify.error("Something went wrong. Please try again.");
+    }
   };
 
-      useEffect(() => {
-        const isUserLogged = localStorage.getItem("key");
-        if (isUserLogged === "true") {
-          setIsLogin(true);
-          navigate("/dashboard");
-        }
-      }, []);
+  useEffect(() => {
+    const isUserLogged = localStorage.getItem("key");
+    const savedUserId = localStorage.getItem("userId");
+    if (isUserLogged === "true" && savedUserId) {
+      setIsLogin(true);
+      setCurrentUserId(savedUserId);
+      navigate("/dashboard");
+    }
+  }, [navigate, setIsLogin, setCurrentUserId]);
 
   return (
     <div className="auth-page">

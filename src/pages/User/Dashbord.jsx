@@ -1,14 +1,32 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
-const Dashbord = () => {
+const Dashbord = ({isLogin, setIsLogin }) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("key");
+    localStorage.removeItem("userId");
+    setIsLogin(false);
+    navigate("/dashboard");
+  };
+
   return (
     <div className="dashboard-page">
+      <div className="dashboard-header-row">
+        <h1 className="dashboard-title">Dashboard</h1>
 
-      <h1 className="dashboard-title">Dashboard</h1>
-      <p className="dashboard-subtitle">Manage your profile, posts, and account settings.</p>
+        {/* LOGOUT BUTTON */}
+        <button className="dashboard-logout-btn" onClick={handleLogout}>
+          {isLogin ? "Logout" : "Login"}
+        </button>
+      </div>
+
+      <p className="dashboard-subtitle">
+        Manage your profile, posts, and account settings.
+      </p>
 
       <div className="dashboard-grid">
-        
+
         {/* PROFILE SETTINGS */}
         <div className="dashboard-card">
           <h2>Profile Settings</h2>
