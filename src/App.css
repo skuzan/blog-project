@@ -45,6 +45,55 @@
   gap: 32px;
 }
 
+/* FILTER WRAPPER */
+.posts-filter {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+  padding: 12px 18px;
+  background: #f7f7f7;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+}
+
+/* LABEL */
+.posts-filter label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* SELECT DROPDOWN */
+.posts-filter select {
+  padding: 10px 16px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* HOVER & FOCUS EFFECT */
+.posts-filter select:hover {
+  border-color: #999;
+}
+
+.posts-filter select:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.15);
+}
+
+/* EMPTY MESSAGE (No Posts) */
+.posts-wrapper p {
+  margin-top: 20px;
+  color: #777;
+  font-size: 15px;
+  text-align: center;
+}
+
 /* TEK POST KART */
 .post-card {
   background: #ffffff;
@@ -926,5 +975,176 @@
 
   .profile-card {
     padding: 20px 14px;
+  }
+}
+
+/* === MY POSTS PAGE === */
+
+.myposts-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 32px 16px 40px;
+}
+
+.myposts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.myposts-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.myposts-subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Liste alanı */
+
+.myposts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Kart */
+
+.mypost-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px 18px 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Üst bilgi */
+
+.mypost-main {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.mypost-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.mypost-category {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #4f46e5;
+}
+
+.mypost-date {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.mypost-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 4px 0;
+  color: #111827;
+}
+
+.mypost-meta {
+  font-size: 12px;
+  color: #6b7280;
+  display: flex;
+  gap: 8px;
+}
+
+.mypost-excerpt {
+  font-size: 14px;
+  color: #4b5563;
+  margin-top: 4px;
+}
+
+/* Aksiyon butonları */
+
+.mypost-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.mypost-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+/* View (neutral) */
+.mypost-btn.neutral {
+  background: #f3f4f6;
+  color: #374151;
+}
+.mypost-btn.neutral:hover {
+  background: #e5e7eb;
+}
+
+/* Edit */
+.mypost-btn.edit {
+  background: #2563eb;
+  color: #ffffff;
+}
+.mypost-btn.edit:hover {
+  background: #1d4ed8;
+}
+
+/* Delete */
+.mypost-btn.delete {
+  background: #ef4444;
+  color: #ffffff;
+}
+.mypost-btn.delete:hover {
+  background: #dc2626;
+}
+
+/* Empty State */
+
+.myposts-empty {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Responsive */
+
+@media (max-width: 640px) {
+  .myposts-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .mypost-actions {
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 }

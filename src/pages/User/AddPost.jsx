@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { notify } from "../../Toasts/toast";
 
-const AddPost = ({ onAddPost}) => {
+const AddPost = ({ onAddPost, data, currentUserId}) => {
   const [title, setTitle] = useState("");
   const [excerpt, setExcerpt] = useState("");
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
   const [tagsInput, setTagsInput] = useState("");
+
+  
 
 
   const handleSubmit = (e) => {
@@ -29,9 +31,11 @@ const AddPost = ({ onAddPost}) => {
       content,
       category,
       tags,
+      userId: currentUserId,
       createdAt : new Date().toISOString(),
       coverImage : "/images/posts/study-tips-7th.jpg",
       readingTime : 5
+
     };
 
     if (onAddPost) {

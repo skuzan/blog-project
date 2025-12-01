@@ -17,6 +17,7 @@ import UserDashboard from "./components/UserDashboard";
 import AddPost from "./pages/User/AddPost";
 import Dashbord from "./pages/User/Dashbord";
 import Profile from "./pages/User/Profile";
+import MyPosts from "./pages/User/MyPosts";
 
 const BASE_URL = "http://localhost:3005";
 
@@ -81,7 +82,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home posts={posts}  setIsLogin={setIsLogin}/>} />
+        <Route path="/" element={<Home posts={posts}  setIsLogin={setIsLogin} setCurrentUserId={setCurrentUserId} isLogin ={isLogin}/>} />
         <Route path="/posts" element={<Posts posts={posts} />} />
         <Route path="/posts/:postId" element={<PostDetails posts={posts} />} />
         <Route path="/about" element={<About />} />
@@ -111,11 +112,11 @@ function App() {
         <Route element={<UserDashboard isLogin={isLogin} />}>
           <Route
             path="/dashboard"
-            element={<Dashbord setIsLogin={setIsLogin} isLogin={isLogin} />}
+            element={<Dashbord setIsLogin={setIsLogin} isLogin={isLogin} setCurrentUserId={setCurrentUserId} />}
           />
           <Route
             path="/addpost"
-            element={<AddPost onAddPost={addPost} data={data} />}
+            element={<AddPost onAddPost={addPost} data={data} currentUserId ={currentUserId}/>}
           />
           <Route
             path="/profile"
@@ -124,6 +125,15 @@ function App() {
                 data={data}
                 currentUserId={currentUserId}
                 onUpdateUser={updateUser}
+              />
+            }
+          />
+                    <Route
+            path="/myposts"
+            element={
+              <MyPosts
+                posts={posts}
+                currentUserId={currentUserId}
               />
             }
           />

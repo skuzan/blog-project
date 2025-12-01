@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 
-const Dashbord = ({isLogin, setIsLogin }) => {
+const Dashbord = ({isLogin, setIsLogin, setCurrentUserId }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -9,6 +10,16 @@ const Dashbord = ({isLogin, setIsLogin }) => {
     setIsLogin(false);
     navigate("/dashboard");
   };
+
+    useEffect(() => {
+      const isUserLogged = localStorage.getItem("key");
+      const savedUserId = localStorage.getItem("userId");
+      if (isUserLogged === "true" && savedUserId) {
+        setIsLogin(true);
+        setCurrentUserId(savedUserId);
+      }
+    }, []);
+    
 
   return (
     <div className="dashboard-page">

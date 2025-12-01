@@ -24,7 +24,7 @@
       "email": "omer@example.com",
       "password": "12345.6",
       "fullName": "Omer Sahin",
-      "avatar": "/images/users/omer.jpg",
+      "avatar": "/images/users/avatar.avif",
       "bio": "Omer burada sen neredesin..."
     }
   ],
@@ -40,7 +40,7 @@
         "javascript",
         "learning"
       ],
-      "userId": 1,
+      "userId": "6482",
       "createdAt": "2025-11-20T10:00:00.000Z",
       "coverImage": "/images/posts/dev-blog-intro.jpg",
       "readingTime": 4
@@ -56,7 +56,7 @@
         "react",
         "api"
       ],
-      "userId": 1,
+      "userId": "6482",
       "createdAt": "2025-11-21T09:30:00.000Z",
       "coverImage": "/images/posts/json-server-setup.jpg",
       "readingTime": 5
@@ -72,7 +72,7 @@
         "school",
         "organization"
       ],
-      "userId": 3,
+      "userId": "555c",
       "createdAt": "2025-11-22T15:10:00.000Z",
       "coverImage": "/images/posts/family-balance.jpg",
       "readingTime": 6
@@ -88,7 +88,7 @@
         "7th-grade",
         "tips"
       ],
-      "userId": 2,
+      "userId": "555c",
       "createdAt": "2025-11-23T11:45:00.000Z",
       "coverImage": "/images/posts/study-tips-7th.jpg",
       "readingTime": 5
@@ -104,7 +104,7 @@
         "germany",
         "family"
       ],
-      "userId": 3,
+      "userId": "6482",
       "createdAt": "2025-11-24T14:20:00.000Z",
       "coverImage": "/images/posts/konigstein-walks.jpg",
       "readingTime": 4
@@ -120,6 +120,23 @@
         "whatsapp",
         "yasak"
       ]
+    },
+    {
+      "id": "668e",
+      "title": "Vize krizi 2026 Dünya Kupası’nı vurdu",
+      "excerpt": "Dünya Kupası'nda kriz çıktı. İran Federasyonu vize verilmemesi nedeniyle kura çekimine katılmaktan vazgeçtiğini duyurdu.\n",
+      "content": "\nPaylaş\nİran Futbol Federasyonu, ABD’nin bazı heyet üyelerine vize vermemesi nedeniyle Washington’da yapılacak Dünya Kupası kura çekimine katılmama kararı aldı.\n\nDünya Kupası gelecek yıl ABD, Kanada ve Meksika’da düzenlenecek. Kuralar, 5 Aralık’ta ABD’nin başkenti Washington’daki Kennedy Center’da gerçekleştirilecek.\n\nKATILIM GARANTİSİ\nİran, turnuvaya katılmayı garantileyen ülkeler arasında yer alıyor. Bu nedenle kura çekimine katılmama kararı dikkat çekti.\n\nFederasyon sözcüsü Emir Mehdi Alevi, FIFA’ya kararın sporla ilgili olmadığını bildirdiklerini açıkladı. Alevi, son iki gün boyunca FIFA Başkanı Gianni Infantino ve FIFA genel sekreterliğiyle resmi yazışmalar yürütüldüğünü, konunun kurumlara iletildiğini belirtti. FIFA’nın yanıtının ise sürecin takip edildiğini gösterdiğini ifade etti.\n\nVİZE ENGELİ ÇIKTI\nİran medyasındaki haberlere göre, Federasyon Başkanı Mehdi Tac dahil bazı heyet üyelerine ABD tarafından vize verilmedi. Bu gelişme, federasyonun kura çekimine katılmama kararında belirleyici oldu.\n\nFederasyon Başkanı Mehdi Tac, kararın siyasi olduğunu düşündüklerini söyledi. Tac, durumu FIFA Başkanı Infantino’ya ilettiklerini de açıkladı.",
+      "category": "World",
+      "tags": [
+        "dünya kupasi",
+        "vize",
+        "iran",
+        "ABD"
+      ],
+      "userId": "6482",
+      "createdAt": "2025-11-30T15:50:12.494Z",
+      "coverImage": "/images/posts/study-tips-7th.jpg",
+      "readingTime": 5
     }
   ]
 }

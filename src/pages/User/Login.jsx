@@ -9,27 +9,19 @@ const Login = ({ data, setIsLogin, setCurrentUserId }) => {
   const navigate = useNavigate();
 
   const handleUserLogin = () => {
-
     if (!email || !password) {
       return notify.error("Username and password are required.");
     }
 
-    const user = data.find(
-      (u) => u.email === email && u.password === password
-    );
-
-    console.log(user);
+    const user = data.find((u) => u.email === email && u.password === password);
 
     if (!user) {
-      return notify.error(
-        "Incorrect username or password. Please try again."
-      );
+      return notify.error("Incorrect username or password. Please try again.");
     }
 
     // 3) Başarılı login
     setIsLogin(true);
     setCurrentUserId(user.id);
-   
 
     localStorage.setItem("key", "true");
     localStorage.setItem("userId", user.id);
@@ -95,11 +87,7 @@ const Login = ({ data, setIsLogin, setCurrentUserId }) => {
           </div>
 
           {/* Button */}
-          <button
-            onClick={handleUserLogin}
-            type="button"
-            className="auth-btn"
-          >
+          <button onClick={handleUserLogin} type="button" className="auth-btn">
             Login
           </button>
         </form>
