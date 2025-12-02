@@ -13,13 +13,13 @@ const MyPosts = ({ posts, currentUserId, onDeletePost }) => {
     return ["all", ...Array.from(new Set(all))];
   }, [posts]);
 
-  // Önce kategoriye göre filtrele
+  // kategoriye göre filtrele
   const filteredPosts =
     selectedCategory === "all"
       ? posts
       : posts.filter((post) => post.category === selectedCategory);
 
-  // Sonra sadece giriş yapan kullanıcının postları
+  // sadece giriş yapan kullanıcının postları
   const myPosts = filteredPosts.filter(
     (post) => String(post.userId) === String(currentUserId)
   );

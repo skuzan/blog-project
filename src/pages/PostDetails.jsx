@@ -1,10 +1,10 @@
-import { useParams, Link } from "react-router";
+import { useParams, Link, useNavigate } from "react-router";
 
 const PostDetails = ({ posts }) => {
-    
   const makeSlug = (title) => title.toLowerCase().replace(/\s+/g, "-"); // tarayıcı adresini düzenleme başlığa göre
 
   const { postId } = useParams();
+  const navigate = useNavigate();
 
   const post = posts.find((p) => makeSlug(p.title) == postId);
 
@@ -14,9 +14,9 @@ const PostDetails = ({ posts }) => {
 
   return (
     <div className="post-detail">
-      <Link to="/posts" className="post-back-btn">
+      <button className="post-back-btn"  onClick={()=>navigate(-1)}>
         ← Back to Posts
-      </Link>
+      </button>
 
       <h1 className="post-detail-title">{post.title}</h1>
 

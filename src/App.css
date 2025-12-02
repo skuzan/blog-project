@@ -254,7 +254,9 @@
   font-size: 14px;
   color: #007aff;
   text-decoration: none;
-  padding: 8px 0;
+  padding: 9px 6px;
+  border-radius: 10px;
+  border: none;
 }
 
 .post-back-btn:hover {
@@ -1146,5 +1148,229 @@
   .mypost-actions {
     justify-content: flex-start;
     flex-wrap: wrap;
+  }
+}
+
+/* ================================
+   Kontakt Page
+=================================== */
+
+.kontakt-page {
+  padding: 2.5rem 1.25rem 3rem;
+  background: var(--ios-bg, #f2f2f7);
+}
+
+.kontakt-container {
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--ios-card-bg, rgba(255, 255, 255, 0.96));
+  border-radius: var(--ios-radius-xl, 24px);
+  box-shadow: var(--ios-shadow-soft, 0 18px 40px rgba(15, 23, 42, 0.08));
+  border: var(--ios-border-soft, 1px solid rgba(148, 163, 184, 0.18));
+  padding: 2.4rem 2.6rem;
+}
+
+.kontakt-header {
+  text-align: center;
+  margin-bottom: 2.2rem;
+}
+
+.kontakt-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+  color: var(--ios-text-main, #111827);
+  letter-spacing: -0.02em;
+}
+
+.kontakt-header p {
+  color: var(--ios-text-secondary, #6b7280);
+  font-size: 0.98rem;
+}
+
+/* Grid layout: info + form */
+
+.kontakt-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  gap: 2rem;
+}
+
+/* Left: info */
+
+.kontakt-info h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--ios-text-main, #111827);
+}
+
+.kontakt-info p {
+  color: var(--ios-text-secondary, #6b7280);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.kontakt-info p strong {
+  font-weight: 600;
+}
+
+.kontakt-info-list {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.kontakt-info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 18px;
+  background: rgba(248, 250, 252, 0.9);
+}
+
+.kontakt-info-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ios-primary-soft, rgba(10, 132, 255, 0.12));
+  font-size: 1.1rem;
+}
+
+.kontakt-info-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ios-text-muted, #9ca3af);
+}
+
+.kontakt-info-value {
+  font-size: 0.95rem;
+  color: var(--ios-text-main, #111827);
+}
+
+.kontakt-info-hint {
+  margin-top: 1.2rem;
+  font-size: 0.9rem;
+  color: var(--ios-text-secondary, #6b7280);
+}
+
+/* Right: form */
+
+.kontakt-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.kontakt-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.kontakt-input-group label {
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ios-text-main, #111827);
+}
+
+.kontakt-input-group input,
+.kontakt-input-group textarea {
+  border-radius: 16px;
+  border: 1px solid rgba(209, 213, 219, 0.9);
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+  outline: none;
+  background: rgba(249, 250, 251, 0.9);
+  color: var(--ios-text-main, #111827);
+  transition: border-color 0.18s ease-out, box-shadow 0.18s ease-out,
+    background 0.18s ease-out;
+}
+
+.kontakt-input-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.kontakt-input-group input::placeholder,
+.kontakt-input-group textarea::placeholder {
+  color: rgba(148, 163, 184, 0.9);
+}
+
+.kontakt-input-group input:focus,
+.kontakt-input-group textarea:focus {
+  border-color: rgba(37, 99, 235, 0.7);
+  box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3);
+  background: #ffffff;
+}
+
+/* Status mesajı */
+
+.kontakt-status {
+  margin-top: 0.3rem;
+  font-size: 0.88rem;
+  color: #15803d;
+  background: #ecfdf3;
+  border-radius: 999px;
+  padding: 0.5rem 0.9rem;
+}
+
+/* Submit butonu */
+
+.kontakt-submit {
+  margin-top: 0.4rem;
+  align-self: flex-start;
+  padding: 0.85rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #ffffff;
+  background: var(--ios-primary-gradient, linear-gradient(135deg, #0a84ff, #5e5ce6));
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.4);
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out,
+    filter 0.18s ease-out;
+}
+
+.kontakt-submit:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.03);
+  box-shadow: 0 18px 38px rgba(37, 99, 235, 0.5);
+}
+
+.kontakt-submit:active {
+  transform: translateY(0);
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.35);
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+  .kontakt-container {
+    padding: 2rem 1.6rem;
+  }
+
+  .kontakt-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kontakt-page {
+    padding-inline: 1rem;
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .kontakt-container {
+    padding: 1.7rem 1.3rem;
+  }
+
+  .kontakt-header h1 {
+    font-size: 1.7rem;
   }
 }

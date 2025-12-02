@@ -61,6 +61,9 @@ function App() {
   const addPost = async (newPost) => {
     await axios.post(`${BASE_URL}/posts`, newPost);
   };
+  const addMessages = async (newMessage) => {
+    await axios.post(`${BASE_URL}/messages`, newMessage);
+  };
 
   useEffect(() => {
     getAllUsers();
@@ -86,7 +89,7 @@ function App() {
         <Route path="/posts" element={<Posts posts={posts} />} />
         <Route path="/posts/:postId" element={<PostDetails posts={posts} />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Kontakt />} />
+        <Route path="/contact" element={<Kontakt onCreateMessage = {addMessages} />} />
         <Route
           path="/register"
           element={

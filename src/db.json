@@ -23,14 +23,39 @@
       "username": "omer",
       "email": "omer@example.com",
       "password": "12345.6",
-      "fullName": "Omer Sahin",
+      "fullName": "Omer Sahin Seven",
       "avatar": "/images/users/avatar.avif",
       "bio": "Omer burada sen neredesin..."
+    },
+    {
+      "id": "067b",
+      "username": "egir",
+      "email": "erdem@example.com",
+      "password": "12345.6",
+      "fullName": "Erdem",
+      "avatar": "/images/users/avatar.avif",
+      "bio": "Erdemplay "
+    }
+  ],
+  "messages": [
+    {
+      "id": "as23",
+      "fullName": "Sinan KUZAN",
+      "email": "sinan_kuzan@hotmail.com",
+      "phone": "+49 176 417 680 86",
+      "message": "Beni ara"
+    },
+    {
+      "id": "3e75",
+      "fullName": "Bayram Bayat",
+      "email": "bayram@example.com",
+      "phone": "017641768086",
+      "message": "Merhaba ben bayram..."
     }
   ],
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Getting Started with My Dev Blog",
       "excerpt": "In this first post I explain why I started this blog and what you can expect here.",
       "content": "Welcome to my dev blog! Here I will share what I learn about React, Android, Firebase and small side projects I build in my free time. The idea is not to be perfect, but to document the journey. In the upcoming posts, I will show how I built a simple car rental app with React, how I use json-server as a fake API, and how I organize my learning as a parent and developer.",
@@ -46,7 +71,7 @@
       "readingTime": 4
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Simple JSON Server Setup for React Projects",
       "excerpt": "A step-by-step mini guide on how to use json-server as a fake backend for your React apps.",
       "content": "In many tutorial projects, we don't want to set up a full backend. json-server is a great tool that lets you create a fake REST API from a simple db.json file. In this post, we create a db.json with users and posts, run json-server on port 3005 and connect it from React using axios. We also talk about common errors like 'command not found: json-server' and how to fix them using npx.",
@@ -62,7 +87,7 @@
       "readingTime": 5
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "School, Projects and Finding Balance",
       "excerpt": "How we try to balance school projects, coding and family time without going crazy.",
       "content": "Between school projects, coding exercises and family life, it is easy to feel overwhelmed. In our family, we try to turn many tasks into small creative projects: building a podcast for biology, preparing German worksheets with ChatGPT, or creating a simple blog to practice coding. In this post I share a few routines that help us keep things fun and not too stressful.",
@@ -78,7 +103,7 @@
       "readingTime": 6
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Study Tips for 7th Grade Students",
       "excerpt": "Some practical tips that helped us survive tests, presentations and projects in 7th grade.",
       "content": "Seventh grade can be intense: more homework, more tests, and more expectations. In this article, we collect simple strategies that worked for us: using colors for vocabulary, creating small escape-room style quizzes for history, preparing summary cards and using apps like Notion or simple paper planners. The idea is to make learning interactive, not boring.",
@@ -94,7 +119,7 @@
       "readingTime": 5
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Weekend Walks Around Königstein",
       "excerpt": "Our favourite simple walks around Königstein and Frankfurt area to clear the head.",
       "content": "When coding or school gets too much, a short walk can reset your brain. Around Königstein and the Taunus area there are many easy routes: short forest paths, views over Frankfurt, and kid-friendly tracks. In this post, we share a few routes we like to walk on weekends, plus some tips on what to bring and how to keep it fun for the kids.",
