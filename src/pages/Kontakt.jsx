@@ -29,6 +29,7 @@ const Kontakt = ({ onCreateMessage }) => {
       email: formData.email,
       phone: formData.phone,
       message: formData.message,
+      createdAt: new Date().toISOString(),
     };
 
     if (onCreateMessage) {

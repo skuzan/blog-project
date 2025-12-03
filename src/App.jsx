@@ -18,12 +18,14 @@ import AddPost from "./pages/User/AddPost";
 import Dashbord from "./pages/User/Dashbord";
 import Profile from "./pages/User/Profile";
 import MyPosts from "./pages/User/MyPosts";
+import Messages from "./pages/Messages";
 
 const BASE_URL = "http://localhost:3005";
 
 function App() {
   const [data, setData] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [messages, setMessages] = useState([]);
   const [isLogin, setIsLogin] = useState(false);
   const [currentUserId, setCurrentUserId] = useState("");
 
@@ -33,6 +35,10 @@ function App() {
   const getAllUsers = async () => {
     const response = await axios.get(BASE_URL + "/users");
     setData(response.data);
+  };
+  const getAllMessages = async () => {
+    const response = await axios.get(BASE_URL + "/messages");
+    setMessages(response.data);
   };
 
   const createUser = async (newUser) => {
@@ -49,6 +55,10 @@ function App() {
 
   const deleteUser = async (userId) => {
     await axios.delete(`${BASE_URL}/users/${userId}`);
+  };
+  const deleteMessage = async (messageId) => {
+    await axios.delete(`${BASE_URL}/messages/${messageId}`);
+    setMessages((prev) => prev.filter((m) => m.id !== messageId));
   };
 
   // POST Functions
@@ -68,6 +78,7 @@ function App() {
   useEffect(() => {
     getAllUsers();
     getAllPosts();
+    getAllMessages();
   }, []);
 
   useEffect(() => {
@@ -85,11 +96,25 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home posts={posts}  setIsLogin={setIsLogin} setCurrentUserId={setCurrentUserId} isLogin ={isLogin}/>} />
+        <Route
+          path="/"
+          element={
+            <Home
+              posts={posts}
+              setIsLogin={setIsLogin}
+              setCurrentUserId={setCurrentUserId}
+              isLogin={isLogin}
+            />
+          }
+        />
         <Route path="/posts" element={<Posts posts={posts} />} />
         <Route path="/posts/:postId" element={<PostDetails posts={posts} />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Kontakt onCreateMessage = {addMessages} />} />
+   
+        <Route
+          path="/contact"
+          element={<Kontakt onCreateMessage={addMessages} />}
+        />
         <Route
           path="/register"
           element={
@@ -115,11 +140,23 @@ function App() {
         <Route element={<UserDashboard isLogin={isLogin} />}>
           <Route
             path="/dashboard"
-            element={<Dashbord setIsLogin={setIsLogin} isLogin={isLogin} setCurrentUserId={setCurrentUserId} />}
+            element={
+              <Dashbord
+                setIsLogin={setIsLogin}
+                isLogin={isLogin}
+                setCurrentUserId={setCurrentUserId}
+              />
+            }
           />
           <Route
             path="/addpost"
-            element={<AddPost onAddPost={addPost} data={data} currentUserId ={currentUserId}/>}
+            element={
+              <AddPost
+                onAddPost={addPost}
+                data={data}
+                currentUserId={currentUserId}
+              />
+            }
           />
           <Route
             path="/profile"
@@ -131,15 +168,16 @@ function App() {
               />
             }
           />
-                    <Route
+          <Route
             path="/myposts"
-            element={
-              <MyPosts
-                posts={posts}
-                currentUserId={currentUserId}
-              />
-            }
+            element={<MyPosts posts={posts} currentUserId={currentUserId} />}
           />
+               <Route
+          path="/messages"
+          element={
+            <Messages messages={messages} onDeleteMessage={deleteMessage} />
+          }
+        />
         </Route>
 
         <Route path="*" element={<NotFound />} />

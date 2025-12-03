@@ -58,6 +58,12 @@ const Dashbord = ({isLogin, setIsLogin, setCurrentUserId }) => {
           <p>View, edit or delete the posts you have created.</p>
           <Link to="/myposts" className="dashboard-btn">Manage Posts</Link>
         </div>
+        {/* MANAGE MESSAGES */}
+        <div className="dashboard-card">
+          <h2>Messages</h2>
+          <p>View, edit or delete the messages.</p>
+          <Link to="/messages" className="dashboard-btn">Manage Messages</Link>
+        </div>
 
         {/* DELETE ACCOUNT */}
         <div className="dashboard-card danger">
