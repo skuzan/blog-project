@@ -38,42 +38,56 @@ const Posts = ({ posts }) => {
       </div>
 
       {/* POSTS LIST */}
-      {filteredPosts.map((post) => (
-        <div className="post-card" key={post.id}>
-          <h3>{post.category}</h3>
-          <h2>{post.title}</h2>
+      {filteredPosts.map((post) => {
+        // 🔐 tags'i güvene al (BURADA HESAPLIYORUZ)
+        const safeTags = Array.isArray(post.tags)
+          ? post.tags
+          : typeof post.tags === "string"
+          ? post.tags
+              .split(",")
+              .map((t) => t.trim())
+              .filter(Boolean)
+          : [];
 
-          <div className="post-meta">
-            <span>{new Date(post.createdAt).toLocaleDateString()}</span>
-            <span>• {post.readingTime} min read</span>
+        return (
+          <div className="post-card" key={post.id}>
+            <h3>{post.category}</h3>
+            <h2>{post.title}</h2>
+
+            <div className="post-meta">
+              <span>{new Date(post.createdAt).toLocaleDateString()}</span>
+              <span>• {post.readingTime} min read</span>
+            </div>
+
+            <p className="post-excerpt">{post.excerpt}</p>
+
+            {post.coverImage && (
+              <img
+                src={post.coverImage}
+                alt={post.title}
+                className="post-image"
+              />
+            )}
+
+            <p className="post-content">{post.content}</p>
+
+            {safeTags.length > 0 && (
+              <ul className="tag-list">
+                {safeTags.map((tag, i) => (
+                  <li key={i}>{tag}</li>
+                ))}
+              </ul>
+            )}
+
+            <Link
+              to={`/posts/${makeSlug(post.title)}`}
+              className="read-more-btn"
+            >
+              Read More
+            </Link>
           </div>
-
-          <p className="post-excerpt">{post.excerpt}</p>
-
-          {post.coverImage && (
-            <img
-              src={post.coverImage}
-              alt={post.title}
-              className="post-image"
-            />
-          )}
-
-          <p className="post-content">{post.content}</p>
-
-          <ul className="tag-list">
-            {post.tags.map((tag, i) => (
-              <li key={i}>{tag}</li>
-            ))}
-          </ul>
-
-          <Link
-            to={`/posts/${makeSlug(post.title)}`}
-            className="read-more-btn"
-          >
-            Read More
-          </Link>
-        </div>
-      ))}
+        );
+      })}
 
       {filteredPosts.length === 0 && (
         <p>No posts found for this category.</p>

@@ -1,11 +1,11 @@
 import { useState, useMemo } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 const MyPosts = ({ posts, currentUserId, onDeletePost }) => {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const navigate = useNavigate();
 
-  const makeSlug = (title) =>
-    title.toLowerCase().replace(/\s+/g, "-");
+  const makeSlug = (title) => title.toLowerCase().replace(/\s+/g, "-");
 
   // Kategorileri tekilleştir
   const categories = useMemo(() => {
@@ -73,7 +73,12 @@ const MyPosts = ({ posts, currentUserId, onDeletePost }) => {
 
               <div className="mypost-meta">
                 <span>{post.readingTime} min read</span>
-                <span>• {post.tags.join(", ")}</span>
+                <span>
+                  •{" "}
+                  {Array.isArray(post.tags)
+                    ? post.tags.join(", ")
+                    : post.tags || ""}
+                </span>
               </div>
 
               <p className="mypost-excerpt">{post.excerpt}</p>
@@ -92,7 +97,7 @@ const MyPosts = ({ posts, currentUserId, onDeletePost }) => {
               <button
                 type="button"
                 className="mypost-btn edit"
-                // onClick={() => navigate(`/editpost/${post.id}`)}
+                onClick={() => navigate(`/update-post/${post.id}`)}
               >
                 Edit
               </button>

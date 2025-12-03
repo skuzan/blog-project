@@ -19,6 +19,7 @@ import Dashbord from "./pages/User/Dashbord";
 import Profile from "./pages/User/Profile";
 import MyPosts from "./pages/User/MyPosts";
 import Messages from "./pages/Messages";
+import UpdatePost from "./pages/User/UpdatePost";
 
 const BASE_URL = "http://localhost:3005";
 
@@ -52,6 +53,12 @@ function App() {
       prev.map((u) => (u.id === userId ? { ...u, ...updatedUser } : u))
     );
   };
+  const updatePost = async (postId, updatedPost) => {
+    await axios.put(`${BASE_URL}/posts/${postId}`, updatedPost);
+    setPosts((prev) =>
+      prev.map((u) => (u.id === postId ? { ...u, ...updatedPost } : u))
+    );
+  };
 
   const deleteUser = async (userId) => {
     await axios.delete(`${BASE_URL}/users/${userId}`);
@@ -59,6 +66,10 @@ function App() {
   const deleteMessage = async (messageId) => {
     await axios.delete(`${BASE_URL}/messages/${messageId}`);
     setMessages((prev) => prev.filter((m) => m.id !== messageId));
+  };
+  const deletePosts = async (postId) => {
+    await axios.delete(`${BASE_URL}/posts/${postId}`);
+    setPosts((prev) => prev.filter((m) => m.id !== postId));
   };
 
   // POST Functions
@@ -110,7 +121,8 @@ function App() {
         <Route path="/posts" element={<Posts posts={posts} />} />
         <Route path="/posts/:postId" element={<PostDetails posts={posts} />} />
         <Route path="/about" element={<About />} />
-   
+        <Route path="/update-post/:postId" element={<UpdatePost onUpdatePost = {updatePost} posts={posts} currentUserId={currentUserId}/>}/>
+
         <Route
           path="/contact"
           element={<Kontakt onCreateMessage={addMessages} />}
@@ -170,14 +182,20 @@ function App() {
           />
           <Route
             path="/myposts"
-            element={<MyPosts posts={posts} currentUserId={currentUserId} />}
+            element={
+              <MyPosts
+                posts={posts}
+                currentUserId={currentUserId}
+                onDeletePost={deletePosts}
+              />
+            }
           />
-               <Route
-          path="/messages"
-          element={
-            <Messages messages={messages} onDeleteMessage={deleteMessage} />
-          }
-        />
+          <Route
+            path="/messages"
+            element={
+              <Messages messages={messages} onDeleteMessage={deleteMessage} />
+            }
+          />
         </Route>
 
         <Route path="*" element={<NotFound />} />

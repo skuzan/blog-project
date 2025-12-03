@@ -45,14 +45,6 @@
       "phone": "017641768086",
       "message": "Merhaba, web sitesli lazım da...",
       "createdAt": "2025-12-03T12:52:52.025Z"
-    },
-    {
-      "id": "89d4",
-      "fullName": "Belma",
-      "email": "belma@example.com",
-      "phone": "017641768086",
-      "message": "Sinan slm",
-      "createdAt": "2025-12-03T12:56:50.794Z"
     }
   ],
   "posts": [
@@ -65,12 +57,13 @@
       "tags": [
         "react",
         "javascript",
-        "learning"
+        "learning",
+        "start"
       ],
       "userId": "6482",
-      "createdAt": "2025-11-20T10:00:00.000Z",
-      "coverImage": "/images/posts/dev-blog-intro.jpg",
-      "readingTime": 4
+      "createdAt": "2025-12-03T18:24:00.781Z",
+      "coverImage": "/images/posts/study-tips-7th.jpg",
+      "readingTime": 5
     },
     {
       "id": "2",
@@ -147,23 +140,6 @@
         "whatsapp",
         "yasak"
       ]
-    },
-    {
-      "id": "668e",
-      "title": "Vize krizi 2026 Dünya Kupası’nı vurdu",
-      "excerpt": "Dünya Kupası'nda kriz çıktı. İran Federasyonu vize verilmemesi nedeniyle kura çekimine katılmaktan vazgeçtiğini duyurdu.\n",
-      "content": "\nPaylaş\nİran Futbol Federasyonu, ABD’nin bazı heyet üyelerine vize vermemesi nedeniyle Washington’da yapılacak Dünya Kupası kura çekimine katılmama kararı aldı.\n\nDünya Kupası gelecek yıl ABD, Kanada ve Meksika’da düzenlenecek. Kuralar, 5 Aralık’ta ABD’nin başkenti Washington’daki Kennedy Center’da gerçekleştirilecek.\n\nKATILIM GARANTİSİ\nİran, turnuvaya katılmayı garantileyen ülkeler arasında yer alıyor. Bu nedenle kura çekimine katılmama kararı dikkat çekti.\n\nFederasyon sözcüsü Emir Mehdi Alevi, FIFA’ya kararın sporla ilgili olmadığını bildirdiklerini açıkladı. Alevi, son iki gün boyunca FIFA Başkanı Gianni Infantino ve FIFA genel sekreterliğiyle resmi yazışmalar yürütüldüğünü, konunun kurumlara iletildiğini belirtti. FIFA’nın yanıtının ise sürecin takip edildiğini gösterdiğini ifade etti.\n\nVİZE ENGELİ ÇIKTI\nİran medyasındaki haberlere göre, Federasyon Başkanı Mehdi Tac dahil bazı heyet üyelerine ABD tarafından vize verilmedi. Bu gelişme, federasyonun kura çekimine katılmama kararında belirleyici oldu.\n\nFederasyon Başkanı Mehdi Tac, kararın siyasi olduğunu düşündüklerini söyledi. Tac, durumu FIFA Başkanı Infantino’ya ilettiklerini de açıkladı.",
-      "category": "World",
-      "tags": [
-        "dünya kupasi",
-        "vize",
-        "iran",
-        "ABD"
-      ],
-      "userId": "6482",
-      "createdAt": "2025-11-30T15:50:12.494Z",
-      "coverImage": "/images/posts/study-tips-7th.jpg",
-      "readingTime": 5
     }
   ]
 }
