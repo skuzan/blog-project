@@ -89,7 +89,7 @@ const UpdatePost = ({ onUpdatePost, posts, currentUserId }) => {
   return (
     <div className="addpost-page">
       <div className="addpost-card">
-        <h1 className="addpost-title">Create New Post</h1>
+        <h1 className="addpost-title">Update Post</h1>
         <p className="addpost-subtitle">
           Update a new blog post with title, short summary and full content.
         </p>

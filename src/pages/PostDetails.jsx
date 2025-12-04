@@ -42,6 +42,19 @@ const PostDetails = ({ posts }) => {
           </div>
         ))}
       </div>
+      <section className="other-blogs">
+        <h3>📖 You may also like</h3>
+        <div className="other-blogs-list">
+          {posts
+            .filter((b) => b.id !== postId)
+            .slice(0, 5)
+            .map((b) => (
+              <Link key={b.id} to={`/posts/${makeSlug(b.title)}`} className="other-blog-link">
+                {b.title}
+              </Link>
+            ))}
+        </div>
+      </section>
     </div>
   );
 };

@@ -3,9 +3,9 @@ import { Link } from "react-router";
 
 const Posts = ({ posts }) => {
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const makeSlug = (title) =>
-    title.toLowerCase().replace(/\s+/g, "-"); // tarayıcı adresini düzenleme başlığa göre
+  const makeSlug = (title) => title.toLowerCase().replace(/\s+/g, "-"); // tarayıcı adresini düzenleme başlığa göre
 
   // Tekrarlayan kategorileri temizleyelim
   const categories = useMemo(() => {
@@ -14,10 +14,17 @@ const Posts = ({ posts }) => {
   }, [posts]);
 
   // Seçili kategoriye göre post'ları filtrele
-  const filteredPosts =
-    selectedCategory === "all"
-      ? posts
-      : posts.filter((post) => post.category === selectedCategory);
+  const filteredPosts = posts.filter((post) => {
+    const matchesCategory =
+      selectedCategory === "all" || post.category === selectedCategory;
+
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      post.content.toLowerCase().includes(searchTerm.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <div className="posts-wrapper">
@@ -35,6 +42,17 @@ const Posts = ({ posts }) => {
             </option>
           ))}
         </select>
+      </div>
+
+      <div className="posts-search">
+        <label htmlFor="search">Search posts: </label>
+        <input
+          id="search"
+          type="text"
+          placeholder="Search by title, excerpt or content..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
 
       {/* POSTS LIST */}
@@ -89,9 +107,7 @@ const Posts = ({ posts }) => {
         );
       })}
 
-      {filteredPosts.length === 0 && (
-        <p>No posts found for this category.</p>
-      )}
+      {filteredPosts.length === 0 && <p>No posts found for this category.</p>}
     </div>
   );
 };

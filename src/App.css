@@ -50,7 +50,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
   padding: 12px 18px;
   background: #f7f7f7;
   border-radius: 12px;
@@ -1535,4 +1535,114 @@
   color: var(--ios-text-muted, #9ca3af);
   margin-top: 0.25rem;
   letter-spacing: 0.02em;
+}
+
+/* =========================================
+   Other Blogs Section
+   ========================================= */
+.other-blogs {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.other-blogs h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-main);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.other-blogs-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.other-blog-link {
+  display: block;
+  padding: 1rem 0;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.other-blog-link:hover {
+  color: var(--color-primary);
+  padding-left: 0.5rem;
+}
+
+.other-blog-link:last-child {
+  border-bottom: none;
+}
+
+/* Search Bar Wrapper */
+.posts-search {
+  margin: 0.5rem 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Label */
+.posts-search label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4b5563; /* gray-600 */
+}
+
+/* Input Field */
+.posts-search input {
+  width: 90%;
+  padding: 0.8rem 1rem 0.8rem 2.8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(156, 163, 175, 0.25);
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  color: #111827; /* gray-900 */
+  outline: none;
+
+  /* iOS-style shadow */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+
+  /* Smooth typing effect */
+  transition: box-shadow 0.2s ease, border 0.2s ease;
+}
+
+/* Input Focus */
+.posts-search input:focus {
+  border-color: rgba(99, 102, 241, 0.6); /* indigo-500 */
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.25);
+}
+
+/* Placeholder styling */
+.posts-search input::placeholder {
+  color: #9ca3af; /* gray-400 */
+}
+
+/* 🔎 Search Icon */
+.posts-search {
+  position: relative;
+}
+
+.posts-search::before {
+  content: "🔍";
+  font-size: 1.2rem;
+  position: absolute;
+  top: 50%;
+  left: 0.75rem;
+  transform: translateY(-10%);
+  opacity: 0.6;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .posts-search input {
+    font-size: 0.95rem;
+  }
 }

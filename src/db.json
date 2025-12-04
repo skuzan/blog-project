@@ -24,7 +24,7 @@
       "email": "omer@example.com",
       "password": "12345.6",
       "fullName": "Omer Sahin Seven",
-      "avatar": "/images/users/avatar.avif",
+      "avatar": "/images/users/avatar2.png",
       "bio": "Omer burada sen neredesin..."
     },
     {
@@ -45,6 +45,14 @@
       "phone": "017641768086",
       "message": "Merhaba, web sitesli lazım da...",
       "createdAt": "2025-12-03T12:52:52.025Z"
+    },
+    {
+      "id": "67bf",
+      "fullName": "Selma",
+      "email": "sinan_kuzan@hotmail.com",
+      "phone": "017641768086",
+      "message": "Baba naber",
+      "createdAt": "2025-12-03T21:36:17.362Z"
     }
   ],
   "posts": [
